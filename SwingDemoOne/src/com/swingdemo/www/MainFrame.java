@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 		//add(button, BorderLayout.SOUTH);
 		add(textPanel, BorderLayout.CENTER);
 		add(toolBar, BorderLayout.NORTH);
-		toolBar.setTextPanel(textPanel);
+//		toolBar.setTextPanel(textPanel);
 //		button.addActionListener(new ActionListener() {
 //
 //			@Override
@@ -36,5 +36,10 @@ public class MainFrame extends JFrame {
 //			}
 //			
 //		});
+		toolBar.setStringListener(new StringListener(){
+			public void textEmitted(String text){
+				textPanel.appendtext(text);
+			}
+		});
 	}
 }
