@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ToolBar extends JPanel {
+public class ToolBar extends JPanel implements ActionListener{
 	private JButton helloButton;
 	private JButton goodbyeButton;
 //	private TextPanel textPanel;
@@ -18,8 +18,8 @@ public class ToolBar extends JPanel {
 		goodbyeButton = new JButton("GoodBye\n");
 		add(helloButton);
 		add(goodbyeButton);
-		helloButton.addActionListener(new ButtonListener());
-		goodbyeButton.addActionListener(new ButtonListener());
+		helloButton.addActionListener(this);
+		goodbyeButton.addActionListener(this);
 	}
 //	public void setTextPanel(TextPanel textPanel) {
 //		this.textPanel = textPanel;
@@ -28,9 +28,7 @@ public class ToolBar extends JPanel {
 	public void setStringListener(StringListener listener){
 		this.textListener = listener;
 	}
-	class ButtonListener implements ActionListener{
-
-		@Override
+	@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton buttonClicked = (JButton) e.getSource();
 			if(buttonClicked == helloButton) {
@@ -42,6 +40,4 @@ public class ToolBar extends JPanel {
 					textListener.textEmitted("GoodBye\n");
 			}
 		}
-		
-	}
 }
